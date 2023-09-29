@@ -1,6 +1,8 @@
 import AlbumsList from "@/components/Album/AlbumsList";
 import cloudinary from "cloudinary";
 
+export const revalidate = 0;
+
 export interface IFoldersType {
   name: string;
   path: string;
