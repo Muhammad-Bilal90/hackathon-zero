@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FolderPlus } from "lucide-react";
 import { useState } from "react";
+import { revalidatePath } from "next/cache";
 
 interface IProps {
   image: string;
@@ -60,6 +61,7 @@ const AlbumDialog: React.FC<IProps> = ({ image }) => {
             onClick={async () => {
               setOpen(false);
               await createFolder(album, image);
+              revalidatePath("/album");
             }}
           >
             Add
