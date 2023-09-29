@@ -1,5 +1,6 @@
 import AlbumsList from "@/components/Album/AlbumsList";
 import cloudinary from "cloudinary";
+import { revalidatePath } from "next/cache";
 
 export interface IFoldersType {
   name: string;
@@ -7,6 +8,7 @@ export interface IFoldersType {
 }
 
 const Page = async () => {
+  revalidatePath("/album");
   const { folders } = (await cloudinary.v2.api.root_folders()) as {
     folders: IFoldersType[];
   };
